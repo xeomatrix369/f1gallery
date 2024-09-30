@@ -1,0 +1,80 @@
+body {
+    background-color: black;
+    background-image:
+        linear-gradient(0deg, lightgray 0.1px, transparent 1px), /* Horizontal grid line */
+        linear-gradient(90deg, lightgray 0.1px, transparent 1px); /* Vertical grid line */
+    background-size: 150px 150px; /* Spacing between the grid lines */
+    background-position: 0 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    max-width: 100%;
+  overflow-x: hidden;
+
+}
+.item_container{
+    display:flex;
+    flex-wrap: wrap;
+    flex-shrink: 3;
+    width: 100%;
+    size: 20vi;
+    margin:auto ;
+    margin-top: 30%;
+
+}
+h1{
+    text-align: center;
+}
+img{
+    width: 100%;
+}
+.item{
+    width: 5%;
+    min-width: 150px;
+    /* rotate: 90deg; */
+    /* flex: 0 0 auto; */
+    /* background-color: white; */
+    /* border: 1px solid gray; */
+    padding: 10px;
+    
+}
+.item_container{
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.item_container .item{
+ transition: .5s;
+ filter:brightness(0);
+ 
+}
+.item_container .item:hover{
+    transition: .5s;
+    filter:brightness(1);
+    transform: translateZ(200px);
+}
+.item_container .item:hover +*{
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+.item_container .item:hover +*+*{
+    filter: brightness(0.4);
+    transform: translateZ(70x) rotateY(20deg) scale(500px);
+}
+.item_container .item:hover +*+*+*{
+    filter: brightness(0.2);
+    transform: translateZ(30x) rotateY(10deg);
+}
+.item_container .item:has(+ *:hover){
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+.item_container .item:has(+ * + *:hover){
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+.item_container .item:has(+*+ * + *:hover){
+    filter: brightness(0.2);
+    transform: translateZ(30x) rotateY(-10deg);
+}
